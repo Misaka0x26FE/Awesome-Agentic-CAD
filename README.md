@@ -1,372 +1,224 @@
-<a id="top" name="top"></a>
+# Awesome Agentic CAD [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 
-<div align="center">
+<p align="center">
   <img src="assets/banner.svg" alt="Awesome Agentic CAD — tools, agent interfaces, benchmarks, and failure modes for LLM-driven CAD/CAE" width="100%">
-</div>
+</p>
 
-<div align="center">
+> A curated list of tools, agent interfaces, benchmarks, and failure modes for LLM-driven CAD and CAE.
+>
+> Agentic CAD means a closed control loop over geometric state: an agent emits actions, a deterministic verifier gates each transition, and failed states roll back. This list separates what runs from what is proven.
 
 **English** · [简体中文](README.zh-CN.md)
 
-[![Awesome](https://img.shields.io/badge/awesome-agentic--cad-0ea5e9?style=flat-square)](#)
-[![License: MIT](https://img.shields.io/github/license/Misaka0x26FE/Awesome-Agentic-CAD?style=flat-square&color=22c55e)](LICENSE)
-[![Last commit](https://img.shields.io/github/last-commit/Misaka0x26FE/Awesome-Agentic-CAD?style=flat-square&color=8b5cf6)](https://github.com/Misaka0x26FE/Awesome-Agentic-CAD/commits/main)
-[![Stars](https://img.shields.io/github/stars/Misaka0x26FE/Awesome-Agentic-CAD?style=flat-square&color=f59e0b)](https://github.com/Misaka0x26FE/Awesome-Agentic-CAD)
-[![PRs welcome](https://img.shields.io/badge/PRs-welcome-22c55e?style=flat-square)](CONTRIBUTING.md)
-
-</div>
-
-> **A technical index of open and closed tools, agent interfaces, evaluation evidence, and failure modes for LLM-driven CAD/CAE.**
->
-> Scope: parametric B-rep authoring, geometry preparation, meshing, structural/thermal/multiphysics solving, post-processing, topology optimization, and the agent surfaces that bind them.
->
-> Status: living document. Every entry lists source, license, agent surface, and headless capability. Claims are tagged with their evidence level.
-
-<table>
-  <tr>
-    <td align="center"><b>36</b><br/><sub>agent projects</sub></td>
-    <td align="center"><b>9</b><br/><sub>benchmarks</sub></td>
-    <td align="center"><b>12</b><br/><sub>failure modes</sub></td>
-    <td align="center"><b>6</b><br/><sub>guides</sub></td>
-    <td align="center"><b>169</b><br/><sub>links checked</sub></td>
-  </tr>
-</table>
-
-> **Read this if** you are building an agent that must produce a manufacturable STEP file, a converged solve, and an auditable trail — not a screenshot.
+![MIT](https://img.shields.io/badge/license-MIT-22c55e?style=flat-square)
+![PRs welcome](https://img.shields.io/badge/PRs-welcome-22c55e?style=flat-square)
 
 ## Contents
 
-- [Definition](#1-definition)
-- [Layer model](#2-layer-model)
-- [Capability envelope](#3-capability-envelope-evidence-based)
-- [Agent interface patterns](#4-agent-interface-patterns)
-- [Reference architecture](#5-reference-architecture)
-- [Tool catalog](#6-tool-catalog)
-- [Agent ecosystem](#61-agent-ecosystem)
-- [Evaluation evidence](#7-evaluation-evidence)
-- [Limitations](#8-limitations)
-- [Repository layout](#9-repository-layout)
-- [Contributing](#10-contributing)
-- [License](#11-license)
-- [References](#12-references)
+- [CAD Authoring](#cad-authoring)
+- [Geometry and Interoperability](#geometry-and-interoperability)
+- [Meshing](#meshing)
+- [Structural and Multiphysics Solvers](#structural-and-multiphysics-solvers)
+- [CFD and Explicit Dynamics](#cfd-and-explicit-dynamics)
+- [Multibody Dynamics](#multibody-dynamics)
+- [Post-processing and I/O](#post-processing-and-io)
+- [Design Optimization](#design-optimization)
+- [Agent Interfaces](#agent-interfaces)
+- [MCP Servers by CAD System](#mcp-servers-by-cad-system)
+- [Benchmarks and Datasets](#benchmarks-and-datasets)
+- [Deep Dives](#deep-dives)
+- [Commercial Tools](#commercial-tools)
+
+## CAD Authoring
+
+- [FreeCAD](https://github.com/FreeCAD/FreeCAD) - Parametric B-rep CAD with PartDesign, Assembly, TechDraw, FEM, and a Python API.
+- [build123d](https://github.com/gumyr/build123d) - Pythonic B-rep modeling with builder and algebra modes, explicit topology objects, and STEP export.
+- [CadQuery](https://github.com/CadQuery/cadquery) - Fluent Workplane API for parametric parts and constraint-based assemblies.
+- [OpenSCAD](https://github.com/openscad/openscad) - Script-based CSG modeler that exports meshes, not B-rep.
+- [Solvespace](https://github.com/solvespace/solvespace) - Lightweight constraint sketcher and solid modeler.
+- [BRL-CAD](https://github.com/BRL-CAD/brlcad) - Long-running CSG modeling and ray-tracing system.
+
+## Geometry and Interoperability
+
+- [OpenCASCADE (OCCT)](https://github.com/Open-Cascade-SAS/OCCT) - Open B-rep kernel with booleans, fillets, STEP/IGES, defeaturing, and mass properties.
+- [OCP](https://github.com/CadQuery/OCP) - Python bindings to OCCT used by build123d and CadQuery.
+- [Analysis Situs](https://gitlab.com/ssv/AnalysisSitus) - Feature recognition, small-face detection, shape healing, and STEP inspection.
+- [Salome GEOM](https://www.salome-platform.org) - Parametric geometry, healing, groups, and CAD import for simulation.
+- [CAD Exchanger](https://cadexchanger.com) - Commercial multi-format CAD conversion with a batch CLI and SDK.
+- [Datakit](https://www.datakit.com) - Commercial CAD data translation with per-format modules.
+- [parasolid-kit](https://pypi.org/project/parasolid-kit/) - Open-source Parasolid reader that needs an external Siemens schema catalog for many files.
+
+## Meshing
+
+- [Gmsh](https://gitlab.onelab.info/gmsh/gmsh) - Tet, hex, pyramid, and wedge meshing with size fields, boundary layers, and a Python API.
+- [Netgen](https://github.com/NGSolve/ngsolve) - Robust tetrahedral meshing integrated with the NGSolve solver stack.
+- [TetGen](https://wias-berlin.de/software/tetgen/) - High-quality tetrahedral meshing with boundary recovery.
+- [MMG](https://github.com/MmgTools/mmg) - Anisotropic remeshing and mesh adaptation.
+
+## Structural and Multiphysics Solvers
+
+- [CalculiX](https://github.com/Dhondtguido/CalculiX) - Static, modal, buckling, thermal, and contact analysis with an Abaqus-like input deck.
+- [PrePoMax](https://github.com/PrePoMax/PrePoMax) - Free GUI pre- and post-processor for CalculiX, with a Python API and MCP server in version 3.
+- [Code_Aster](https://gitlab.com/codeaster/codeaster) - Industrial structural, thermal, fatigue, fracture, and contact solver from EDF.
+- [Salome-Meca](https://www.open-simulation-center.org/downloads/code_aster/SALOME_MECA/2025) - Integrated geometry, meshing, and Code_Aster environment distributed as a container.
+- [Elmer](https://github.com/ElmerCSC/elmerfem) - Multiphysics solver covering structure, heat, flow, electromagnetics, and acoustics.
+- [FEniCSx](https://github.com/FEniCS/dolfinx) - Weak-form PDE solving with Python and C++ interfaces.
+- [MOOSE](https://github.com/idaholab/moose) - Fully coupled multiphysics framework with GPU backends and nuclear-grade QA.
+- [deal.II](https://github.com/dealii/dealii) - Adaptive finite elements with hp-refinement and HPC support.
+- [MFEM](https://github.com/mfem/mfem) - High-order finite elements with GPU and exascale support.
+- [Kratos Multiphysics](https://github.com/KratosMultiphysics/Kratos) - Multiphysics application framework with FSI and DEM modules.
+- [GetFEM](https://github.com/GetFEM/GetFEM) - Generic finite element library with XFEM and contact support.
+- [scikit-fem](https://github.com/kinnala/scikit-fem) - Lightweight Python finite element library for prototypes and teaching.
+- [FreeFEM](https://github.com/FreeFem/FreeFem-sources) - PDE domain language with 2D/3D meshing, multi-mesh interpolation, and eigenvalues.
+
+## CFD and Explicit Dynamics
+
+- [OpenFOAM](https://github.com/OpenFOAM/OpenFOAM-dev) - Finite-volume CFD with dictionary-driven cases and custom solvers.
+- [SU2](https://github.com/su2code/SU2) - Compressible CFD and adjoint-based shape optimization.
+- [code_saturne](https://github.com/code-saturne/code_saturne) - EDF's industrial CFD solver for large meshes.
+- [OpenCourant](https://github.com/OpenCourant/OpenCourant) - Community continuation of OpenRadioss for explicit crash and impact analysis.
+
+## Multibody Dynamics
+
+- [MBDyn](https://www.mbdyn.org) - General multibody solver with flexible elements and co-simulation interfaces.
+- [Project Chrono](https://github.com/projectchrono/chrono) - Multibody, FEA, granular, and fluid-solid interaction engine with a Python API.
+
+## Post-processing and I/O
+
+- [ParaView](https://gitlab.kitware.com/paraview/paraview) - Large-data visualization with batch Python scripting.
+- [PyVista](https://github.com/pyvista/pyvista) - Python VTK wrapper with headless rendering.
+- [meshio](https://github.com/nschloe/meshio) - Mesh format conversion across Gmsh, Abaqus, VTK, MED, and other formats.
+- [ccx2paraview](https://github.com/calculix/ccx2paraview) - Converts CalculiX FRD results to VTK.
+- [VisIt](https://github.com/visit-dav/visit) - Parallel visualization and analysis for large simulations.
+
+## Design Optimization
+
+- [pyMOTO](https://github.com/aatmdelissen/pyMOTO) - SIMP and robust topology optimization with thermal and overhang filters.
+- [beso](https://github.com/calculix/beso) - Bi-directional evolutionary structural optimization driven by CalculiX.
+- [dl4to](https://github.com/dl4to/dl4to) - PyTorch-based topology optimization with differentiable physics.
+- [TopOpt](https://github.com/TopOpt/TopOpt_in_PETSc) - Educational SIMP implementation on PETSc.
+
+## Agent Interfaces
+
+- [build123d-mcp](https://github.com/pzfreo/build123d-mcp) - MCP server over a persistent build123d session with execute, render, measure, feature recognition, and export tools.
+- [agentcad](https://github.com/jdilla1277/agentcad) - CLI and MCP server for build123d with STEP export, renders, topology inspection, and version diffs.
+- [cadgen](https://github.com/earthtojake/text-to-cad) - build123d-native CAD engine with CLI, MCP, viewer, and STEP/GLB/STL/3MF/DXF export.
+- [PyAnsys Common MCP](https://github.com/ansys/pyansys-common-mcp) - Apache-licensed framework for building MCP servers over PyAnsys libraries.
+- [PyMechanical-MCP](https://github.com/ansys/pymechanical-mcp) - 28-tool MCP server for Ansys Mechanical sessions, scripting, solve, and results.
+- [PyMAPDL-MCP](https://github.com/ansys/pymapdl-mcp) - MCP server for MAPDL command batches and Python execution.
+- [PyFluent-MCP](https://github.com/ansys/pyfluent-mcp) - 20-tool MCP server for Fluent settings, solve, mesh quality, and reports.
+
+## MCP Servers by CAD System
+
+### FreeCAD
+
+- [freecad-mcp](https://github.com/neka-nat/freecad-mcp) - Two-process MCP server with 17 API-level tools, arbitrary code execution, and a headless execution path.
+- [freecad-ai](https://github.com/ghbalf/freecad-ai) - In-workbench agent with 64 semantic tools for bodies, sketches, assemblies, measurement, and undo.
+- [freecad-robust-mcp](https://github.com/spkane/freecad-addon-robust-mcp-server) - FreeCAD addon and bridge focused on connection robustness, packaged on PyPI and Docker.
+
+### SolidWorks
+
+- [solidworks-automation-skill](https://github.com/wzyn20051216/solidworks-automation-skill) - Agent skill and MCP toolkit with a delivery gate that rejects stale artifacts.
+- [SolidPilot](https://github.com/eyfel/mcp-server-solidworks) - Intent-level SolidWorks automation compiled through a CAD-neutral intermediate representation.
+- [SolidworksMCP-TS](https://github.com/vespo92/SolidworksMCP-TS) - TypeScript MCP server for SolidWorks automation on Windows.
+
+### Onshape
+
+- [jarvis-onshape-mcp](https://github.com/ReshefElisha/jarvis-onshape-mcp) - Claude Code plugin for sketches, features, mates, Variable Studios, and FeatureScript, returning structured change records.
+- [onshape-mcp](https://github.com/hedless/onshape-mcp) - 45-tool MCP bridge over the Onshape REST API.
+
+### Fusion 360
+
+- [fusion360-mcp-server](https://github.com/faust-machines/fusion360-mcp-server) - MCP server connecting coding agents to Fusion 360.
+- [Fusion-360-MCP-Server](https://github.com/AuraFriday/Fusion-360-MCP-Server) - MCP control of Fusion 360 from any compatible client.
+
+### CATIA
+
+- [catia-v5-mcp-server](https://github.com/daiemon12/catia-v5-mcp-server) - CATIA V5 MCP server for parts, sketches, features, and native analysis.
+- [CAD-Agent-Hub](https://github.com/Cai-aa/CAD-Agent-Hub) - Windows-focused hub with MCP servers for CATIA, SolidWorks, NX, and EPLAN.
+
+### Siemens NX
+
+- [NX_MCP](https://github.com/DreamEnding/NX_MCP) - Local NX automation with more than 47 tools over the NX GUI.
+
+### Ansys
+
+- [ANSYS-Workbench-mcp](https://github.com/hongwenwang36-eng/ANSYS-Workbench-mcp) - Windows bridge to SpaceClaim, Workbench, and System Coupling through journals and file-queue IPC.
+
+### Abaqus
+
+- [abaqus-mcp](https://github.com/Cai-aa/abaqus-mcp) - Abaqus/CAE plugin with file-based IPC, job submission, ODB inspection, and viewport capture.
+- [Abaqus-Control-MCP](https://github.com/Whfkl/Abaqus-Control-MCP) - Real-time Abaqus/CAE control bridge for MCP clients.
+- [abaqus-mcp-server](https://github.com/jianzhichun/abaqus-mcp-server) - MCP server for an already running Abaqus/CAE GUI.
+
+### COMSOL
+
+- [COMSOL_Multiphysics_MCP](https://github.com/wjc9011/COMSOL_Multiphysics_MCP) - COMSOL automation through the Java API with a published paper.
+- [comsol-mcp](https://github.com/777gegewu/comsol-mcp) - Learning-oriented COMSOL MCP controlling an open Desktop GUI through Java Shell.
+
+### OpenFOAM
+
+- [openfoam-mcp-server](https://github.com/webworn/openfoam-mcp-server) - OpenFOAM MCP with case setup, error resolution, and CFD education features.
+
+### CAE Platforms
+
+- [CAE-Agent-Hub](https://github.com/Cai-aa/CAE-Agent-Hub) - MCP tools, skills, and result viewers for modeling, meshing, solving, and post-processing.
+- [FieldCraft](https://github.com/tangency-labs/fieldcraft) - Clean-room CAE in Rust with tet/hex meshing, implicit and explicit solvers, and MCP.
+- [sim-cli](https://github.com/svd-ai-lab/sim-cli) - Parses existing CAE files into bounded structured text for agents without launching a solver.
+
+## Benchmarks and Datasets
+
+- [Text2CAD-Bench](https://arxiv.org/html/2605.18430) - 600 CAD examples and 1,200 prompts scored by Chamfer distance, invalidity rate, and IoU.
+- [CADGenBench](https://github.com/huggingface/cadgenbench) - Validity-gated generation and editing benchmark with topology and mating-feature checks.
+- [CAD-Assistant](https://cadassistant.github.io/) - Tool-augmented VLLM framework evaluated on 2D/3D CAD QA, auto-constraining, and sketch parameterization.
+- [FEABench](https://arxiv.org/abs/2504.06260) - End-to-end finite element tasks executed through the COMSOL Java API.
+- [FEM-Bench](https://doi.org/10.1007/s00366-026-02397-z) - Computational mechanics code and test generation benchmark with 33 tasks.
+- [MecEng](https://arxiv.org/abs/2608.14615) - 84 multibody modeling tasks spanning rigid and flexible systems with graph and eigenfrequency checks.
+- [SCBench](https://arxiv.org/html/2604.09594v1) - 285 spatial reasoning subtasks graded by deterministic verifiers and simulators.
+- [EngiBench](https://aclanthology.org/2026.findings-acl.1810/) - Hierarchical engineering problem-solving benchmark with perturbed and knowledge-enhanced variants.
+- [EngiAI](https://arxiv.org/html/2605.19743v3) - Capability-based evaluation of tool-connected engineering agents.
+- [MechVQA](https://arxiv.org/html/2605.30794v2) - 3,281 mechanical drawings and 21K questions on recognition, reasoning, and standards judgment.
+- [Text2CAD dataset](https://github.com/SadilKhan/Text2CAD) - NeurIPS 2024 dataset and model for sequential CAD generation from text prompts.
+
+## Deep Dives
+
+- [Tool catalog](https://github.com/Misaka0x26FE/Awesome-Agentic-CAD/blob/main/docs/tool-catalog.md) - Versions, licenses, agent surfaces, and headless capability for every listed tool.
+- [Agent ecosystem](https://github.com/Misaka0x26FE/Awesome-Agentic-CAD/blob/main/docs/agent-ecosystem.md) - Star thresholds, maintenance status, and interface details for 36 agent projects.
+- [Agent interfaces](https://github.com/Misaka0x26FE/Awesome-Agentic-CAD/blob/main/docs/agent-interfaces.md) - MCP, CLI, Python, and file contracts with error codes, gates, and sandboxing.
+- [Benchmarks](https://github.com/Misaka0x26FE/Awesome-Agentic-CAD/blob/main/docs/benchmarks.md) - Metric definitions, results, threats to validity, and evidence grading.
+- [Limitations](https://github.com/Misaka0x26FE/Awesome-Agentic-CAD/blob/main/docs/limitations.md) - Twelve failure mechanisms with observables, mitigations, and residual risk.
+- [Reference architecture](https://github.com/Misaka0x26FE/Awesome-Agentic-CAD/blob/main/docs/reference-architecture.md) - State machine, JSON schemas, rollback, determinism, and anti-patterns.
+
+## Commercial Tools
+
+- [SolidWorks](https://www.solidworks.com) - Windows-only parametric CAD built on Parasolid with a COM automation API.
+- [Siemens NX](https://plm.sw.siemens.com/en-US/nx/) - High-end CAD, CAM, and CAE platform with NX Open automation.
+- [Creo](https://www.ptc.com/en/products/creo) - Parametric CAD with the Granite kernel and a C/C++ toolkit.
+- [CATIA](https://www.3ds.com/products/catia) - Dassault's CGM-based platform for surfacing and large assemblies.
+- [Inventor](https://www.autodesk.com/products/inventor) - Autodesk mechanical CAD with iLogic and .NET automation.
+- [Solid Edge](https://solidedge.siemens.com) - Synchronous and ordered modeling with a Parasolid kernel.
+- [Fusion](https://www.autodesk.com/products/fusion-360) - Cloud-connected CAD, CAM, and CAE with Python and C++ APIs.
+- [Onshape](https://www.onshape.com) - Browser CAD with built-in PDM, FeatureScript, and a REST API.
+- [SpaceClaim](https://www.ansys.com/products/3d-design/ansys-spaceclaim) - Direct modeling and geometry cleanup for simulation.
+- [Ansys Mechanical](https://www.ansys.com/products/structures/ansys-mechanical) - Structural, thermal, modal, and coupled analysis.
+- [Ansys Fluent](https://www.ansys.com/products/fluids/ansys-fluent) - General-purpose CFD with PyFluent automation.
+- [Abaqus](https://www.3ds.com/products/simulia/abaqus) - Nonlinear structural and explicit dynamics solver.
+- [COMSOL Multiphysics](https://www.comsol.com) - Coupled PDE and multiphysics simulation with a Java API.
+- [Simcenter 3D](https://plm.sw.siemens.com/en-US/simcenter/mechanical-simulation/simcenter-3d/) - Structural dynamics, acoustics, and durability.
+- [HyperMesh](https://www.siemens.com/en-us/products/simcenter/simulation-modeling-visualization/hypermesh/) - Pre-processing, batch meshing, and solver decks.
+- [ANSA](https://www.cadence.com/en_US/home/tools/engineering-simulation/ansa-preprocessor.html) - Geometry cleanup and batch meshing for multiple solvers.
+- [SimScale](https://www.simscale.com) - Cloud CFD, FEA, and thermal simulation with a REST API.
+- [MSC Nastran](https://www.cadence.com/en_US/home/tools/engineering-simulation/msc-nastran.html) - Linear, dynamic, and aeroelastic structural analysis.
+- [LS-DYNA](https://www.ansys.com/products/structures/ansys-ls-dyna) - Explicit crash, impact, and forming simulation.
+- [Tecplot 360](https://www.tecplot.com) - Engineering plotting and post-processing.
+- [OptiStruct](https://altair.com/optistruct) - Industrial topology, shape, and size optimization.
+- [Tosca](https://www.3ds.com/products/simulia/tosca) - Topology and shape optimization for Abaqus workflows.
+- [Inspire](https://altair.com/inspire) - Concept-level generative design and topology optimization.
+
+## Contributing
+
+Contributions are welcome. Read [contributing.md](contributing.md) for inclusion criteria, star thresholds, evidence requirements, and the review checklist.
 
 ---
 
-## 1. Definition
-
-**Agentic CAD** is a closed control loop over a geometric state, not a natural-language front end to a CAD GUI.
-
-```
-s_t = (B_t, G_t, M_t, P_t, R_t)
-a_t ~ π(· | s_t, h_t)
-s_{t+1} = T(s_t, a_t)
-V(s_{t+1}) -> {accept, reject, rollback}
-```
-
-| Symbol | Meaning | Machine-readable form |
-|---|---|---|
-| `B` | B-rep solid/assembly | STEP AP242, BREP, XBF |
-| `G` | Assembly graph: instances, mates, contact pairs | JSON: `{instance, definition, transform, interfaces[]}` |
-| `M` | Volume/surface mesh + quality fields | `.msh`, `.inp`, `.med`, `.vtk` |
-| `P` | Solver model: materials, BCs, loads, step controls | `.inp`, `.comm`, `.sif`, JSON |
-| `R` | Results + convergence metadata | `.frd`, `.dat`, `.vtu`, JSON |
-| `V` | Deterministic verifier | Python/CLI, exit code + JSON report |
-
-A system qualifies as agentic only if **`V` is executable and its verdict gates the next action**. Without `V`, the system is a code generator with a chat interface.
-
-### 1.1 Invariants
-
-Any transition must preserve a task-specific invariant set `I`:
-
-- `watertight(B) = true`, `is_valid(B) = true`, `n_solids ≥ 1`;
-- `|ΔV| / V_0 ≤ ε_v`, `|Δm| / m_0 ≤ ε_m`;
-- contact set `C` preserved: `C_new ⊇ C_required`, `|C_new \ C_0| = 0` unless declared;
-- mesh gate: `minSICN ≥ q_min`, `n_bad ≤ n_bad,0`;
-- solver gate: `converged = true`, `residual ≤ tol`, `n_iter < n_max`;
-- unit and datum consistency: `unit_system`, `datum_frame`, `tolerance_stack`.
-
-An agent that cannot evaluate `I` cannot be trusted with `T`.
-
----
-
-## 2. Layer model
-
-| Layer | Responsibility | Open reference implementations | Closed reference implementations |
-|---|---|---|---|
-| L0 Geometry kernel | B-rep evaluation, booleans, fillets, defeaturing | OCCT / OCP | Parasolid, ACIS, CGM, ShapeManager |
-| L1 Authoring | Features, sketches, assemblies, drawings | FreeCAD, build123d, CadQuery | SolidWorks, NX, Creo, CATIA, Inventor, Solid Edge, Fusion, Onshape |
-| L2 Preparation | Healing, simplification, feature recognition | OCCT, Analysis Situs, Salome GEOM | SpaceClaim, DesignModeler, ANSA, CADdoctor |
-| L3 Meshing | Tet/hex/boundary layer, quality metrics | Gmsh, Netgen, TetGen, MMG | ANSYS Meshing, HyperMesh, ANSA, STAR-CCM+ |
-| L4 Solving | Structural, thermal, modal, explicit, CFD, multibody | CalculiX, Code_Aster, Elmer, FEniCSx, MOOSE, FreeFEM, OpenFOAM, MBDyn, Chrono | ANSYS Mechanical/Fluent, Abaqus, Nastran, COMSOL, Simcenter, LS-DYNA |
-| L5 Post | Field visualization, extraction, reporting | ParaView, PyVista, meshio, ccx2paraview | CFD-Post, Tecplot, EnSight, HyperView |
-| L6 Agent surface | Tool exposure, state, verification, rollback | freecad-mcp, build123d-mcp, agentcad, cadgen, PyAnsys MCP, PrePoMax MCP | vendor copilots / proprietary APIs |
-
-The layer boundary is a **process boundary** where possible. GPL tools (Gmsh, CalculiX, Code_Aster, OpenFOAM) are invoked as subprocesses; permissively licensed libraries (build123d, CadQuery, meshio, PyVista) are imported in-process.
-
----
-
-## 3. Capability envelope (evidence-based)
-
-Reliability bands are derived from public benchmarks; see [`docs/benchmarks.md`](docs/benchmarks.md) for scales, metrics, and caveats.
-
-| Task | Current band | Dominant failure | Evidence |
-|---|---|---|---|
-| Parametric part from text (simple primitives) | **High**: validity > 90%, CD ≈ 44–53, IoU ≈ 0.54–0.59 | dimensional drift, missing features | Text2CAD-Bench L1 |
-| Parametric part with sweep/loft/shell | **Low**: invalidity 68–93% | kernel operation misuse, degenerate sections | Text2CAD-Bench L3 |
-| Edit existing B-rep | **Medium**: 0.62–0.71 editing score | reference drift, feature reordering | CADGenBench editing split |
-| Constraint inference on sketches | **Medium-high**: PF1 0.979, CF1 0.484 | conflicting constraints, over-constraint | CAD-Assistant / SketchGraphs |
-| FEA model setup end-to-end | **Low**: 2/15 valid targets at 0.88 executability | BC/material/contact semantics | FEABench Gold |
-| FEM kernel code | **High for linear**, low for nonlinear | geometric stiffness, buckling, finite rotation | FEM-Bench 2025 |
-| Rigid multibody from text | **High**: 86–91% success | parameter selection, joint limits | MecEng L1–L2 |
-| Flexible multibody from text | **Low**: chain of geometry → tet mesh → MOR | any single-stage error aborts the chain | MecEng L3 |
-| Engineering drawing QA | **Split**: title block ≈ 97%, assembly ≈ 46% | projection rules, GD&T semantics | MechVQA |
-| GD&T extraction | **Low**: recall 25–37%, precision 41–56% wrong | symbol vocabulary, datum references | A*STAR 400-drawing study |
-| Long-horizon agent workflow | **Medium**: 96–97% closed / 55–78% open on one problem; 20–53% cross-domain | tool orchestration, retrieval, HPC state | EngiAI |
-
----
-
-## 4. Agent interface patterns
-
-Four patterns, ordered by determinism and blast radius.
-
-| Pattern | Transport | State | Typical tools | Risk |
-|---|---|---|---|---|
-| **MCP / JSON-RPC** | stdio or Streamable HTTP | server-held session | freecad-mcp, build123d-mcp, PyMechanical-MCP | tool allowlist, auth, prompt injection |
-| **In-process Python API** | function call | process memory | build123d, OCP, gmsh, PyVista | kernel crash kills the agent process |
-| **CLI + artifact contract** | fork/exec | filesystem | FreeCADCmd, gmsh, ccx, FreeFEM, ParaView | exit-code ambiguity, partial outputs |
-| **File exchange** | shared volume | none | STEP, BREP, `.inp`, `.frd`, `.med`, `.vtu` | schema drift, unit loss, silent healing |
-
-### 4.1 MCP configuration (stdio)
-
-```json
-{
-  "mcpServers": {
-    "freecad": {
-      "command": "uvx",
-      "args": ["freecad-mcp"]
-    },
-    "build123d": {
-      "command": "uv",
-      "args": ["tool", "run", "--python", "3.12", "build123d-mcp@latest"]
-    },
-    "mechanical": {
-      "command": "ansys-mechanical-mcp"
-    }
-  }
-}
-```
-
-MCP semantics that matter for CAD:
-
-- `tools/list` is a capability contract; cache it and hash it for reproducibility;
-- `tools/call` must return **structured content** (JSON) plus optional image content, not prose;
-- long operations need progress notifications and cancellation;
-- session state must be explicit: document id, active body, selection set, undo depth.
-
-### 4.2 CLI contract
-
-Every CLI wrapper should emit a single JSON object on stdout and use exit codes:
-
-| Exit | Meaning | Agent action |
-|---|---|---|
-| 0 | success, artifacts written | verify artifacts |
-| 2 | invalid input / schema error | repair arguments |
-| 3 | geometric failure (non-manifold, boolean failure) | rollback, adjust parameters |
-| 4 | meshing failure / quality gate | remesh or simplify |
-| 5 | solver non-convergence | adjust controls, do not accept results |
-| 6 | external dependency missing | stop, report environment |
-
-### 4.3 Verification loop
-
-```python
-state = load_step("part.step")
-report = audit(state)                      # mass props, validity, topology
-if not report.ok:
-    raise GeometryRejected(report)
-
-mesh = gmsh_mesh(state, size=2.0)
-if mesh.min_sicn < 0.10:
-    state = simplify(state, rules="defeature")
-    mesh = gmsh_mesh(state, size=2.0)
-
-job = write_inp(state, mesh, material, bc)
-res = run_ccx(job, timeout=1800)
-if not res.converged:
-    rollback()
-else:
-    assert abs(res.f1 - ref.f1) / ref.f1 < 0.10
-```
-
-The verifier is the product. The model is replaceable.
-
----
-
-## 5. Reference architecture
-
-```
-┌──────────────────────────────────────────────────────────────┐
-│ agent (LLM)                                                  │
-│  plan → emit action → read structured observation → repair   │
-└───────────────┬──────────────────────────────────────────────┘
-                │ MCP / Python / CLI
-┌───────────────▼──────────────────────────────────────────────┐
-│ tool layer                                                   │
-│  build123d / FreeCAD / OCP  →  STEP                          │
-│  OCP audit + Defeaturing    →  simplified STEP + report.json │
-│  Gmsh                       →  mesh.msh + quality.json       │
-│  CalculiX / Code_Aster      →  job.inp / job.comm            │
-│  ccx2paraview / PyVista     →  fields.vtu + render.png       │
-└───────────────┬──────────────────────────────────────────────┘
-                │ artifacts + hashes
-┌───────────────▼──────────────────────────────────────────────┐
-│ verifier layer (deterministic, no LLM)                       │
-│  validity | mass | contact | mesh quality | residual | delta │
-│  accept → commit; reject → rollback to last checkpoint       │
-└──────────────────────────────────────────────────────────────┘
-```
-
-Design rules:
-
-1. **Single writer per document.** FreeCAD `App::Document` and most kernels are not concurrency-safe.
-2. **Checkpoint before mutation.** Store `(STEP, JSON state, hash)` tuples; rollback is file restore, not undo.
-3. **Observe numerically and visually.** Screenshots catch rigid-body displacement; mass properties catch scale errors. Neither alone is sufficient.
-4. **Pin versions.** Kernel, mesher, solver, and model versions enter the reproducibility hash.
-5. **Separate GPL processes.** Do not link GPL solvers into a distributed binary; invoke via `subprocess` with an artifact contract.
-
----
-
-## 6. Tool catalog
-
-Full tables with source, license, function, and agent surface: [`docs/tool-catalog.md`](docs/tool-catalog.md).
-
-Highlights:
-
-- **Geometry**: FreeCAD 1.1.x, build123d 0.13, CadQuery 2.8, OCCT/OCP 8.0.
-- **Meshing**: Gmsh 4.15.2, Netgen/NGSolve 6.2, TetGen, MMG.
-- **Solving**: CalculiX 2.23, Code_Aster 17.4 / Salome-Meca 2025.1, Elmer, FEniCSx, MOOSE 5.0, FreeFEM 4.17, OpenFOAM, MBDyn, Chrono.
-- **Post**: ParaView 5.11, PyVista, meshio, ccx2paraview.
-- **Agent surfaces**: freecad-ai (64 tools), freecad-mcp (17 tools), build123d-mcp (38 tools), agentcad, cadgen, PyAnsys MCP (Mechanical 28 tools, MAPDL, Fluent 20 tools), PrePoMax 3.0 MCP.
-- **Closed**: SolidWorks, NX, Creo, CATIA, Inventor, Solid Edge, Fusion, Onshape, SpaceClaim, ANSYS, Abaqus, COMSOL, Simcenter, HyperMesh, ANSA, SimScale, CAD Exchanger, Datakit.
-
-### 6.1 Agent ecosystem
-
-A separate catalog of MCP servers and agent-native CAD projects, filtered by stars and maintenance: [`docs/agent-ecosystem.md`](docs/agent-ecosystem.md).
-
-| Direction | Leader | Stars | Interface |
-|---|---|---:|---|
-| FreeCAD | `neka-nat/freecad-mcp` | 3,254 | stdio MCP + XML-RPC |
-| SolidWorks | `wzyn20051216/solidworks-automation-skill` | 1,867 | MCP + skill |
-| Text-to-CAD | `earthtojake/text-to-cad` | 25,810 | CLI + MCP |
-| Abaqus | `Cai-aa/abaqus-mcp` | 326 | MCP + plugin |
-| COMSOL | `wjc9011/COMSOL_Multiphysics_MCP` | 944 | MCP |
-| CAE orchestration | `Cai-aa/CAE-Agent-Hub` | 1,297 | MCP + skills |
-
-Thresholds: ≥ 200 stars for popular directions (FreeCAD, SolidWorks, text-to-CAD, general CAD MCP); ≥ 100 for niche directions (CATIA, NX, Onshape, Fusion, code-CAD, CAE solvers).
-
----
-
-## 7. Evaluation evidence
-
-Summary and metric definitions: [`docs/benchmarks.md`](docs/benchmarks.md).
-
-Headline numbers, with harness caveats:
-
-| Benchmark | Scale | Best public result | What it measures |
-|---|---|---|---|
-| Text2CAD-Bench | 600 CAD / 1,200 prompts | L1 CD 44.31, IR 11.1%, IoU 0.59; L3 IR 68–93% | text → CadQuery code |
-| CADGenBench | 81 fixtures | 0.677 aggregate, 98.77% validity | validity-gated generation + editing |
-| CAD-Assistant | 1,700 test parts | 2D 0.791, 3D 0.857, CF1 0.484 | tool-augmented VLLM over FreeCAD |
-| FEABench | 15 Gold + 200 Large | 0.88 executability, 2/15 valid target | COMSOL API end-to-end |
-| FEM-Bench 2025 | 33 tasks | 30/33 any-pass, 26/33 5/5 | FEM code + tests |
-| MecEng | 84 tasks, 34 LLMs | 91.4% rigid / much lower flexible | multibody model synthesis |
-| SCBench | 285 subtasks | 57.6% | spatial constraint satisfaction |
-| MechVQA | 3,281 drawings / 21K QA | 84.85% domain-tuned; 77.28% general | drawing understanding |
-| EngiAI | 2 design problems | 96–97% closed / 55–78% open | tool-connected workflow |
-
-**Do not compare across harnesses.** Report `(model, harness, retries, n_samples, benchmark_version)` together.
-
----
-
-## 8. Limitations
-
-Full analysis: [`docs/limitations.md`](docs/limitations.md).
-
-1. **Validity ≠ fidelity.** A watertight solid can be dimensionally wrong.
-2. **Global constraint consolidation.** Local geometry is plausible; global invariants fail.
-3. **Physical semantics.** Boundary conditions, materials, and contact are under-specified and often wrong.
-4. **Topological naming.** Persistent references to faces/edges break under parametric rebuild.
-5. **Error propagation.** Geometry → mesh → solver is multiplicative; one stage failure aborts the chain.
-6. **Harness non-comparability.** Same benchmark, different scores.
-7. **Data scarcity and IP.** Real assemblies, standards, and validation cases are not public.
-8. **Determinism and version drift.** Model, kernel, and tool versions change outputs.
-9. **Cost and latency.** Iterative loops multiply token and compute cost.
-10. **Security.** `execute_code` is arbitrary code execution; drawings and STEP metadata are untrusted input.
-11. **Qualification.** No public evidence that LLM-generated models satisfy code/regulatory acceptance.
-12. **Responsibility.** The human remains the license holder and signatory.
-
----
-
-## 9. Repository layout
-
-| Path | Contents |
-|---|---|
-| [`README.md`](README.md) · [`README.zh-CN.md`](README.zh-CN.md) | Scope, layer model, capability envelope, interface patterns, reference architecture |
-| [`docs/tool-catalog.md`](docs/tool-catalog.md) | Open and closed tools with version, license, source, function, agent surface, headless capability |
-| [`docs/agent-ecosystem.md`](docs/agent-ecosystem.md) | 36 MCP servers and agent-native CAD projects, filtered by stars and maintenance |
-| [`docs/agent-interfaces.md`](docs/agent-interfaces.md) | MCP/CLI/Python/file contracts, error taxonomy, verification gates, sandboxing |
-| [`docs/benchmarks.md`](docs/benchmarks.md) | Metric definitions, benchmark results, threats to validity, evidence grading |
-| [`docs/limitations.md`](docs/limitations.md) | 12 failure mechanisms with observables, mitigations, and residual risk |
-| [`docs/reference-architecture.md`](docs/reference-architecture.md) | State machine, JSON schemas, rollback, determinism, anti-patterns |
-| [`CONTRIBUTING.md`](CONTRIBUTING.md) | Inclusion criteria, star thresholds, evidence format, PR checklist |
-| [`scripts/check_links.py`](scripts/check_links.py) | Link checker; 404/410 are hard failures, bot blocks are warnings |
-
----
-
-## 10. Contributing
-
-Inclusion criteria, evidence requirements, and PR format: [`CONTRIBUTING.md`](CONTRIBUTING.md).
-
-Short version:
-
-- open tools must have a public source repository and an OSI license;
-- closed tools must have a public product page and a documented automation surface;
-- every entry needs `source`, `license`, `function`, `agent surface`, `headless`;
-- benchmark claims need `benchmark`, `version`, `n`, `metric`, `harness`;
-- links are checked by `scripts/check_links.py`.
-
----
-
-## 11. License
-
-MIT. See [`LICENSE`](LICENSE).
-
----
-
-## 12. References
-
-- Text2CAD-Bench: <https://arxiv.org/html/2605.18430>
-- CADGenBench metrics: <https://github.com/huggingface/cadgenbench/blob/main/docs/metrics.md>
-- CAD-Assistant: <https://cadassistant.github.io/>
-- FEABench: <https://arxiv.org/abs/2504.06260>
-- FEM-Bench: <https://doi.org/10.1007/s00366-026-02397-z>
-- MecEng: <https://arxiv.org/abs/2608.14615>
-- SCBench: <https://arxiv.org/html/2604.09594v1>
-- MechVQA: <https://arxiv.org/html/2605.30794v2>
-- EngiBench: <https://aclanthology.org/2026.findings-acl.1810/>
-- EngiAI: <https://arxiv.org/html/2605.19743v3>
-- Autodesk AI Pulse 2026: <https://www.autodesk.com/design-make/articles/2026-ai-pulse>
-- McKinsey State of AI 2026: <https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai>
-
----
-
-## Star history
-
-<a href="https://star-history.com/#Misaka0x26FE/Awesome-Agentic-CAD&Date">
-  <img src="https://api.star-history.com/svg?repos=Misaka0x26FE/Awesome-Agentic-CAD&type=Date" alt="Star history chart">
-</a>
-
----
-
-<div align="center">
-<sub>Built for engineers who need evidence, not demos. · <a href="#top">Back to top</a></sub>
-</div>
+[MIT](license) © 2026 Misaka0x26FE and contributors.
