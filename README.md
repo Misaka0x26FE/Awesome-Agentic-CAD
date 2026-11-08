@@ -32,6 +32,8 @@
   </tr>
 </table>
 
+> **Read this if** you are building an agent that must produce a manufacturable STEP file, a converged solve, and an auditable trail — not a screenshot.
+
 ## Contents
 
 - [Definition](#1-definition)
