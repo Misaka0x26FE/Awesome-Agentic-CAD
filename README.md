@@ -12,6 +12,7 @@
 
 ![MIT](https://img.shields.io/badge/license-MIT-22c55e?style=flat-square)
 ![PRs welcome](https://img.shields.io/badge/PRs-welcome-22c55e?style=flat-square)
+![awesome-lint](https://github.com/Misaka0x26FE/Awesome-Agentic-CAD/actions/workflows/awesome-lint.yml/badge.svg)
 
 ## Contents
 
