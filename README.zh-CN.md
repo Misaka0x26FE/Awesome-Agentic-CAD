@@ -222,4 +222,4 @@
 
 ---
 
-[MIT](license) © 2026 Misaka0x26FE 与贡献者。
+[MIT](LICENSE) © 2026 Misaka0x26FE 与贡献者。

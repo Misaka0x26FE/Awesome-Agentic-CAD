@@ -222,4 +222,4 @@ Contributions are welcome. Read [contributing.md](contributing.md) for inclusion
 
 ---
 
-[MIT](license) © 2026 Misaka0x26FE and contributors.
+[MIT](LICENSE) © 2026 Misaka0x26FE and contributors.
