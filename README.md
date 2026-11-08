@@ -1,10 +1,52 @@
-# Awesome Agentic CAD
+<a id="top" name="top"></a>
 
-> A technical index of open and closed tools, agent interfaces, evaluation evidence, and failure modes for LLM-driven CAD/CAE.
+<div align="center">
+  <img src="assets/banner.svg" alt="Awesome Agentic CAD — tools, agent interfaces, benchmarks, and failure modes for LLM-driven CAD/CAE" width="100%">
+</div>
+
+<div align="center">
+
+**English** · [简体中文](README.zh-CN.md)
+
+[![Awesome](https://img.shields.io/badge/awesome-agentic--cad-0ea5e9?style=flat-square)](#)
+[![License: MIT](https://img.shields.io/github/license/Misaka0x26FE/Awesome-Agentic-CAD?style=flat-square&color=22c55e)](LICENSE)
+[![Last commit](https://img.shields.io/github/last-commit/Misaka0x26FE/Awesome-Agentic-CAD?style=flat-square&color=8b5cf6)](https://github.com/Misaka0x26FE/Awesome-Agentic-CAD/commits/main)
+[![Stars](https://img.shields.io/github/stars/Misaka0x26FE/Awesome-Agentic-CAD?style=flat-square&color=f59e0b)](https://github.com/Misaka0x26FE/Awesome-Agentic-CAD/stargazers)
+[![PRs welcome](https://img.shields.io/badge/PRs-welcome-22c55e?style=flat-square)](CONTRIBUTING.md)
+
+</div>
+
+> **A technical index of open and closed tools, agent interfaces, evaluation evidence, and failure modes for LLM-driven CAD/CAE.**
 >
 > Scope: parametric B-rep authoring, geometry preparation, meshing, structural/thermal/multiphysics solving, post-processing, topology optimization, and the agent surfaces that bind them.
 >
 > Status: living document. Every entry lists source, license, agent surface, and headless capability. Claims are tagged with their evidence level.
+
+<table>
+  <tr>
+    <td align="center"><b>36</b><br/><sub>agent projects</sub></td>
+    <td align="center"><b>9</b><br/><sub>benchmarks</sub></td>
+    <td align="center"><b>12</b><br/><sub>failure modes</sub></td>
+    <td align="center"><b>6</b><br/><sub>guides</sub></td>
+    <td align="center"><b>169</b><br/><sub>links checked</sub></td>
+  </tr>
+</table>
+
+## Contents
+
+- [Definition](#1-definition)
+- [Layer model](#2-layer-model)
+- [Capability envelope](#3-capability-envelope-evidence-based)
+- [Agent interface patterns](#4-agent-interface-patterns)
+- [Reference architecture](#5-reference-architecture)
+- [Tool catalog](#6-tool-catalog)
+- [Agent ecosystem](#61-agent-ecosystem)
+- [Evaluation evidence](#7-evaluation-evidence)
+- [Limitations](#8-limitations)
+- [Repository layout](#9-repository-layout)
+- [Contributing](#10-contributing)
+- [License](#11-license)
+- [References](#12-references)
 
 ---
 
@@ -264,22 +306,17 @@ Full analysis: [`docs/limitations.md`](docs/limitations.md).
 
 ## 9. Repository layout
 
-```
-.
-├── README.md
-├── README.zh-CN.md
-├── CONTRIBUTING.md
-├── LICENSE
-├── docs/
-│   ├── tool-catalog.md
-│   ├── agent-ecosystem.md
-│   ├── agent-interfaces.md
-│   ├── benchmarks.md
-│   ├── limitations.md
-│   └── reference-architecture.md
-└── scripts/
-    └── check_links.py
-```
+| Path | Contents |
+|---|---|
+| [`README.md`](README.md) · [`README.zh-CN.md`](README.zh-CN.md) | Scope, layer model, capability envelope, interface patterns, reference architecture |
+| [`docs/tool-catalog.md`](docs/tool-catalog.md) | Open and closed tools with version, license, source, function, agent surface, headless capability |
+| [`docs/agent-ecosystem.md`](docs/agent-ecosystem.md) | 36 MCP servers and agent-native CAD projects, filtered by stars and maintenance |
+| [`docs/agent-interfaces.md`](docs/agent-interfaces.md) | MCP/CLI/Python/file contracts, error taxonomy, verification gates, sandboxing |
+| [`docs/benchmarks.md`](docs/benchmarks.md) | Metric definitions, benchmark results, threats to validity, evidence grading |
+| [`docs/limitations.md`](docs/limitations.md) | 12 failure mechanisms with observables, mitigations, and residual risk |
+| [`docs/reference-architecture.md`](docs/reference-architecture.md) | State machine, JSON schemas, rollback, determinism, anti-patterns |
+| [`CONTRIBUTING.md`](CONTRIBUTING.md) | Inclusion criteria, star thresholds, evidence format, PR checklist |
+| [`scripts/check_links.py`](scripts/check_links.py) | Link checker; 404/410 are hard failures, bot blocks are warnings |
 
 ---
 
@@ -317,3 +354,17 @@ MIT. See [`LICENSE`](LICENSE).
 - EngiAI: <https://arxiv.org/html/2605.19743v3>
 - Autodesk AI Pulse 2026: <https://www.autodesk.com/design-make/articles/2026-ai-pulse>
 - McKinsey State of AI 2026: <https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai>
+
+---
+
+## Star history
+
+<a href="https://star-history.com/#Misaka0x26FE/Awesome-Agentic-CAD&Date">
+  <img src="https://api.star-history.com/svg?repos=Misaka0x26FE/Awesome-Agentic-CAD&type=Date" alt="Star history chart">
+</a>
+
+---
+
+<div align="center">
+<sub>Built for engineers who need evidence, not demos. · <a href="#top">Back to top</a></sub>
+</div>

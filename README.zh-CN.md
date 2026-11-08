@@ -1,10 +1,52 @@
-# Awesome Agentic CAD
+<a id="top" name="top"></a>
 
-> 面向 LLM 驱动 CAD/CAE 的技术索引：开源与闭源工具、agent 接口、评测证据、失效模式。
+<div align="center">
+  <img src="assets/banner.svg" alt="Awesome Agentic CAD — 面向 LLM 驱动 CAD/CAE 的工具、接口、评测与失效模式" width="100%">
+</div>
+
+<div align="center">
+
+[English](README.md) · **简体中文**
+
+[![Awesome](https://img.shields.io/badge/awesome-agentic--cad-0ea5e9?style=flat-square)](#)
+[![License: MIT](https://img.shields.io/github/license/Misaka0x26FE/Awesome-Agentic-CAD?style=flat-square&color=22c55e)](LICENSE)
+[![Last commit](https://img.shields.io/github/last-commit/Misaka0x26FE/Awesome-Agentic-CAD?style=flat-square&color=8b5cf6)](https://github.com/Misaka0x26FE/Awesome-Agentic-CAD/commits/main)
+[![Stars](https://img.shields.io/github/stars/Misaka0x26FE/Awesome-Agentic-CAD?style=flat-square&color=f59e0b)](https://github.com/Misaka0x26FE/Awesome-Agentic-CAD/stargazers)
+[![PRs welcome](https://img.shields.io/badge/PRs-welcome-22c55e?style=flat-square)](CONTRIBUTING.md)
+
+</div>
+
+> **面向 LLM 驱动 CAD/CAE 的技术索引：开源与闭源工具、agent 接口、评测证据、失效模式。**
 >
 > 范围：参数化 B-rep 建模、几何准备、网格、结构/热/多物理求解、后处理、拓扑优化，以及把它们绑定成闭环的 agent 接口层。
 >
 > 状态：持续维护。每条记录给出源码、许可证、agent 接口、无头能力；结论标注证据等级。
+
+<table>
+  <tr>
+    <td align="center"><b>36</b><br/><sub>agent 项目</sub></td>
+    <td align="center"><b>9</b><br/><sub>benchmark</sub></td>
+    <td align="center"><b>12</b><br/><sub>失效机制</sub></td>
+    <td align="center"><b>6</b><br/><sub>篇指南</sub></td>
+    <td align="center"><b>169</b><br/><sub>条链接已检查</sub></td>
+  </tr>
+</table>
+
+## 目录
+
+- [定义](#1-定义)
+- [分层模型](#2-分层模型)
+- [能力包络](#3-能力包络基于公开证据)
+- [Agent 接口模式](#4-agent-接口模式)
+- [参考架构](#5-参考架构)
+- [工具目录](#6-工具目录)
+- [Agent 生态](#61-agent-生态)
+- [评测证据](#7-评测证据)
+- [局限](#8-局限)
+- [仓库结构](#9-仓库结构)
+- [贡献](#10-贡献)
+- [许可证](#11-许可证)
+- [参考](#12-参考)
 
 ---
 
@@ -262,22 +304,17 @@ MCP server 与 agent-native CAD 项目的独立目录（按 star 与维护状态
 
 ## 9. 仓库结构
 
-```
-.
-├── README.md
-├── README.zh-CN.md
-├── CONTRIBUTING.md
-├── LICENSE
-├── docs/
-│   ├── tool-catalog.md
-│   ├── agent-ecosystem.md
-│   ├── agent-interfaces.md
-│   ├── benchmarks.md
-│   ├── limitations.md
-│   └── reference-architecture.md
-└── scripts/
-    └── check_links.py
-```
+| 路径 | 内容 |
+|---|---|
+| [`README.md`](README.md) · [`README.zh-CN.md`](README.zh-CN.md) | 范围、分层模型、能力包络、接口模式、参考架构 |
+| [`docs/tool-catalog.md`](docs/tool-catalog.md) | 开源/闭源工具：版本、许可证、源码、功能、agent 接口、无头能力 |
+| [`docs/agent-ecosystem.md`](docs/agent-ecosystem.md) | 36 个 MCP server 与 agent-native CAD 项目，按 star 与维护状态筛选 |
+| [`docs/agent-interfaces.md`](docs/agent-interfaces.md) | MCP/CLI/Python/文件契约、错误码、校验门、沙箱 |
+| [`docs/benchmarks.md`](docs/benchmarks.md) | 指标定义、benchmark 结果、效度威胁、证据分级 |
+| [`docs/limitations.md`](docs/limitations.md) | 12 个失效机制：观测、缓解、残余风险 |
+| [`docs/reference-architecture.md`](docs/reference-architecture.md) | 状态机、JSON schema、回滚、确定性、反模式 |
+| [`CONTRIBUTING.md`](CONTRIBUTING.md) | 收录标准、star 阈值、证据格式、PR checklist |
+| [`scripts/check_links.py`](scripts/check_links.py) | 链接检查器；404/410 为硬失败，反爬为警告 |
 
 ---
 
@@ -315,3 +352,17 @@ MIT，见 [`LICENSE`](LICENSE)。
 - EngiAI：<https://arxiv.org/html/2605.19743v3>
 - Autodesk AI Pulse 2026：<https://www.autodesk.com/design-make/articles/2026-ai-pulse>
 - McKinsey State of AI 2026：<https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai>
+
+---
+
+## Star history
+
+<a href="https://star-history.com/#Misaka0x26FE/Awesome-Agentic-CAD&Date">
+  <img src="https://api.star-history.com/svg?repos=Misaka0x26FE/Awesome-Agentic-CAD&type=Date" alt="Star history chart">
+</a>
+
+---
+
+<div align="center">
+<sub>为需要证据、而不是演示的工程师而建。· <a href="#top">回到顶部</a></sub>
+</div>

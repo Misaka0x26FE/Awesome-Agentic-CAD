@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="360" viewBox="0 0 1280 360" role="img" aria-label="Awesome Agentic CAD">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#050810"/>
+      <stop offset="0.55" stop-color="#0a1222"/>
+      <stop offset="1" stop-color="#0b1a2e"/>
+    </linearGradient>
+    <linearGradient id="title" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#f8fafc"/>
+      <stop offset="0.6" stop-color="#a5f3fc"/>
+      <stop offset="1" stop-color="#38bdf8"/>
+    </linearGradient>
+    <linearGradient id="bar" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#0ea5e9" stop-opacity="0.85"/>
+      <stop offset="1" stop-color="#22d3ee" stop-opacity="0.25"/>
+    </linearGradient>
+    <linearGradient id="line" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#22d3ee" stop-opacity="0"/>
+      <stop offset="0.5" stop-color="#22d3ee" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#6366f1" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#22d3ee" stop-opacity="0.20"/>
+      <stop offset="1" stop-color="#22d3ee" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e293b" stroke-width="1" stroke-opacity="0.55"/>
+    </pattern>
+  </defs>
+
+  <rect width="1280" height="360" fill="url(#bg)"/>
+  <rect width="1280" height="360" fill="url(#grid)"/>
+  <ellipse cx="1060" cy="40" rx="360" ry="220" fill="url(#glow)"/>
+
+  <!-- left copy -->
+  <text x="64" y="86" font-family="Inter, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="13" font-weight="600" letter-spacing="3.2" fill="#67e8f9">OPEN + CLOSED TOOLING · MCP · EVALS</text>
+
+  <text x="62" y="162" font-family="Inter, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="58" font-weight="800" fill="url(#title)">Awesome Agentic CAD</text>
+
+  <text x="64" y="206" font-family="Inter, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="17" fill="#cbd5e1">Tools, agent interfaces, benchmarks, and failure modes for LLM-driven CAD/CAE.</text>
+  <text x="64" y="232" font-family="Inter, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="17" fill="#94a3b8">From B-rep kernels to MCP servers — with evidence, not marketing.</text>
+
+  <!-- layer chips -->
+  <g font-family="Inter, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="600">
+    <rect x="64" y="270" width="96" height="28" rx="14" fill="#0f172a" stroke="#1e293b"/>
+    <text x="112" y="289" text-anchor="middle" fill="#7dd3fc">L0 Kernel</text>
+
+    <rect x="170" y="270" width="112" height="28" rx="14" fill="#0f172a" stroke="#1e293b"/>
+    <text x="226" y="289" text-anchor="middle" fill="#7dd3fc">L1 Authoring</text>
+
+    <rect x="292" y="270" width="88" height="28" rx="14" fill="#0f172a" stroke="#1e293b"/>
+    <text x="336" y="289" text-anchor="middle" fill="#7dd3fc">L2 Prep</text>
+
+    <rect x="390" y="270" width="86" height="28" rx="14" fill="#0f172a" stroke="#1e293b"/>
+    <text x="433" y="289" text-anchor="middle" fill="#7dd3fc">L3 Mesh</text>
+
+    <rect x="486" y="270" width="88" height="28" rx="14" fill="#0f172a" stroke="#1e293b"/>
+    <text x="530" y="289" text-anchor="middle" fill="#7dd3fc">L4 Solve</text>
+
+    <rect x="584" y="270" width="84" height="28" rx="14" fill="#0f172a" stroke="#1e293b"/>
+    <text x="626" y="289" text-anchor="middle" fill="#7dd3fc">L5 Post</text>
+
+    <rect x="678" y="270" width="94" height="28" rx="14" fill="#0f172a" stroke="#1e293b"/>
+    <text x="725" y="289" text-anchor="middle" fill="#7dd3fc">L6 Agent</text>
+  </g>
+
+  <!-- right: layer stack -->
+  <g font-family="'JetBrains Mono', 'SFMono-Regular', Consolas, monospace" font-size="10.5" fill="#475569" text-anchor="end">
+    <text x="846" y="76">kernel</text>
+    <text x="846" y="106">author</text>
+    <text x="846" y="136">prep</text>
+    <text x="846" y="166">mesh</text>
+    <text x="846" y="196">solve</text>
+    <text x="846" y="226">post</text>
+    <text x="846" y="256">agent</text>
+  </g>
+  <g opacity="0.95">
+    <rect x="858" y="62" width="300" height="18" rx="9" fill="url(#bar)" opacity="0.35"/>
+    <rect x="858" y="92" width="336" height="18" rx="9" fill="url(#bar)" opacity="0.45"/>
+    <rect x="858" y="122" width="270" height="18" rx="9" fill="url(#bar)" opacity="0.55"/>
+    <rect x="858" y="152" width="318" height="18" rx="9" fill="url(#bar)" opacity="0.65"/>
+    <rect x="858" y="182" width="246" height="18" rx="9" fill="url(#bar)" opacity="0.75"/>
+    <rect x="858" y="212" width="330" height="18" rx="9" fill="url(#bar)" opacity="0.85"/>
+    <rect x="858" y="242" width="288" height="18" rx="9" fill="url(#bar)" opacity="0.95"/>
+  </g>
+
+  <rect x="0" y="357" width="1280" height="3" fill="url(#line)"/>
+</svg>
