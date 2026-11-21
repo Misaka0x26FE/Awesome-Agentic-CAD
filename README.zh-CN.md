@@ -104,6 +104,7 @@
 - [build123d-mcp](https://github.com/pzfreo/build123d-mcp) - 持久 build123d 会话上的 MCP server，提供执行、渲染、测量、特征识别与导出工具。
 - [agentcad](https://github.com/jdilla1277/agentcad) - build123d 的 CLI 与 MCP server，支持 STEP 导出、渲染、拓扑检查与版本 diff。
 - [cadgen](https://github.com/earthtojake/text-to-cad) - build123d 原生 CAD 引擎，提供 CLI、MCP、viewer 与 STEP/GLB/STL/3MF/DXF 导出。
+- [mesh2cad](https://github.com/emirmrkaljevic/mesh2cad) - 通过 stdio MCP server 与 CLI 将 STL 逆向为 CAD：拟合平面、圆柱、圆锥与球面，输出 STEP 以及带命名参数的 CadQuery、OpenSCAD、FreeCAD 脚本，并报告 Hausdorff 偏差；仅适用于简单机械零件。
 - [PyAnsys Common MCP](https://github.com/ansys/pyansys-common-mcp) - 基于 PyAnsys 构建 MCP server 的 Apache 许可框架。
 - [PyMechanical-MCP](https://github.com/ansys/pymechanical-mcp) - 面向 Ansys Mechanical 的 28 工具 MCP server，覆盖会话、脚本、求解与结果。
 - [PyMAPDL-MCP](https://github.com/ansys/pymapdl-mcp) - 面向 MAPDL 命令批处理与 Python 执行的 MCP server。
