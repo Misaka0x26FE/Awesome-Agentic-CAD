@@ -104,6 +104,7 @@
 - [build123d-mcp](https://github.com/pzfreo/build123d-mcp) - MCP server over a persistent build123d session with execute, render, measure, feature recognition, and export tools.
 - [agentcad](https://github.com/jdilla1277/agentcad) - CLI and MCP server for build123d with STEP export, renders, topology inspection, and version diffs.
 - [cadgen](https://github.com/earthtojake/text-to-cad) - build123d-native CAD engine with CLI, MCP, viewer, and STEP/GLB/STL/3MF/DXF export.
+- [mesh2cad](https://github.com/emirmrkaljevic/mesh2cad) - STL-to-CAD reverse engineering over a stdio MCP server and CLI that fits planes, cylinders, cones, and spheres, writes STEP plus CadQuery, OpenSCAD, and FreeCAD scripts with named parameters, and reports Hausdorff deviation; scoped to simple mechanical parts.
 - [PyAnsys Common MCP](https://github.com/ansys/pyansys-common-mcp) - Apache-licensed framework for building MCP servers over PyAnsys libraries.
 - [PyMechanical-MCP](https://github.com/ansys/pymechanical-mcp) - 28-tool MCP server for Ansys Mechanical sessions, scripting, solve, and results.
 - [PyMAPDL-MCP](https://github.com/ansys/pymapdl-mcp) - MCP server for MAPDL command batches and Python execution.
